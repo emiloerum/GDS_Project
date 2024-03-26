@@ -3,3 +3,6 @@ stopwords.csv
 995,000_rows.csv
 large_dataset_cleaned.csv
 small_data_pickle
+big_clean_data_pickle
+BoWdata.csv
+small_datasetprocessed.csv
