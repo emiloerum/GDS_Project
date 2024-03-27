@@ -6,3 +6,5 @@ small_data_pickle
 big_clean_data_pickle
 BoWdata.csv
 small_datasetprocessed.csv
+trialBow.npy
+X_tfidf.npy
