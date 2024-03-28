@@ -1,4 +1,8 @@
 rigtige pipeline:
-projecttask 1
+bigdataset
 exploration
 advmodel1
+
+med nyt data: 
+bigdataset 
+explorationv2
