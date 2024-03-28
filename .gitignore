@@ -7,3 +7,5 @@ content_preprocessed.pkl
 scraped_article_info.csv
 995,000_rows_preprocessed.pkl
 X_tfidf.npy
+X_extended_tfidf.npy
+scraped_data_preprocessed.pkl
