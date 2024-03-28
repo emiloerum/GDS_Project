@@ -3,5 +3,7 @@ large_dataset_cleaned.csv
 stopwords.csv
 995,000_rows.csv
 content_column_tokenized.csv
-content_preprocessed
+content_preprocessed.pkl
 scraped_article_info.csv
+995,000_rows_preprocessed.pkl
+X_tfidf.npy
