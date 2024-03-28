@@ -9,3 +9,8 @@ small_datasetprocessed.csv
 trialBow.npy
 X_tfidf.npy
 995,000_rows_preprocessed.pkl
+test.tsv
+train.tsv
+valid.tsv
+final_clean_data
+content_preprocessed.pkl
