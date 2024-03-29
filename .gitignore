@@ -11,3 +11,4 @@ data/X_extended_tfidf.npy
 data/scraped_data_preprocessed.pkl
 data/labeled_content.pkl
 data/labeled_content_extended.pkl
+data/labeled_liar_statements_preprocessed.pkl
