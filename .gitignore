@@ -11,6 +11,9 @@ X_tfidf.npy
 995,000_rows_preprocessed.pkl
 test.tsv
 train.tsv
+labeled_content.pkl
 valid.tsv
 final_clean_data
 content_preprocessed.pkl
+labeled_content.plk
+labeled_liar_statements_preprocessed.pkl
