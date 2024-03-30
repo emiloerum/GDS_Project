@@ -6,9 +6,7 @@ data/content_column_tokenized.csv
 data/content_preprocessed.pkl
 data/scraped_article_info.csv
 data/995,000_rows_preprocessed.pkl
-data/X_tfidf.npy
-data/X_extended_tfidf.npy
 data/scraped_data_preprocessed.pkl
-data/labeled_content.pkl
-data/labeled_content_extended.pkl
+data/labeled_content_extended_new.pkl
+data/labeled_content_new.pkl
 data/labeled_liar_statements_preprocessed.pkl

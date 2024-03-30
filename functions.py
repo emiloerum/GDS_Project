@@ -9,6 +9,7 @@ import re
 from cleantext import clean
 import nltk
 from nltk.stem.snowball import SnowballStemmer
+from sklearn.metrics import accuracy_score, f1_score, recall_score, precision_score, confusion_matrix
 
 
 #Functions used for models
@@ -29,7 +30,7 @@ def bin_target(x):
     if x=="fake":
         return 1
     
-def word_count_reg(field,word):
+def word_count(field,word):
     '''Function that counts a how many times a word appears in a document'''
     count = 0
     for words in field:
@@ -44,14 +45,6 @@ def gridSearch(model, solver, penalties, data, target):
     clf = GridSearchCV(model, parameters, scoring='accuracy', cv=5)
     clf.fit(data,target)
     return clf
-
-def reg_from_one_word(X_train, X_val, y_train, y_val, word):
-    X_word_train = pd.DataFrame(X_train.apply(lambda x: word_count_reg(x,word)))
-    X_word_val = pd.DataFrame(X_val.apply(lambda x: word_count_reg(x,word)))
-    model = LogisticRegression()
-    reg = model.fit(X_word_train,y_train)
-    y_pred = model.predict(X_word_val)
-    return accuracy_score(y_pred,y_val)
 
 #functions used for preprocessing
 def remove_dates_from_content(content):
@@ -125,3 +118,31 @@ def update_frequency_counter(frequency_counter, content):
     for list in content:
         frequency_counter.update(list)
     return frequency_counter
+
+def evaluate_and_plot(model, name, test_vec, y_test):
+    print(f'evaluating {name}')
+    y_pred = model.predict(test_vec)
+
+    #Evaluating performance on different metrics
+    accuracy = accuracy_score(y_test, y_pred)
+    f1 = f1_score(y_test, y_pred)
+    precision = precision_score(y_test, y_pred)
+    recall = recall_score(y_test, y_pred)
+
+    #Printing performance values
+    print(f'accuracy: {accuracy}\nf1: {f1}\nPrecision: {precision}\nRecall: {recall}')
+
+    #Plotting confusion matrix
+    cm = confusion_matrix(y_true=y_test, y_pred=y_pred)
+    fig, ax = plt.subplots(figsize=(3, 3))
+    ax.matshow(cm, cmap=plt.cm.Blues, alpha = 0.3)
+    for i in range(2):
+        for j in range(2):
+            ax.text(x=j, y=i, s=cm[i, j], va='center', ha='center', size='medium')
+    plt.xlabel('Predicted', fontsize=8)
+    plt.ylabel('Actual', fontsize=8)
+    plt.title(f'Confusion Matrix, {name}', fontsize=10)
+    plt.show
+
+
+    
