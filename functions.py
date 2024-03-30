@@ -120,6 +120,10 @@ def update_frequency_counter(frequency_counter, content):
     return frequency_counter
 
 def evaluate_and_plot(model, name, test_vec, y_test):
+    '''Function for evaluating a given model on the metrics:
+    accuracy, f1, precision and recall. Futhermore it plots the confusion
+    matrix of the models predictions'''
+
     print(f'evaluating {name}')
     y_pred = model.predict(test_vec)
 
@@ -145,4 +149,54 @@ def evaluate_and_plot(model, name, test_vec, y_test):
     plt.show
 
 
-    
+def vocabulary_size(series):
+    '''Computes the vocabulary size of a corpus by iterating through every word
+    in every document in the corpus and adding it to a dictionary if it hasnt been seen before
+    as well as incrementing a variable counting every unique word. Returns the unique_word_count
+    and sorted list of words and their frequencies'''
+    # Initialize a counter for unique words count and dictionary to store word frequencies
+    unique_words_count = 0
+    word_frequency = {}
+    # Iterate through each element in the series
+    for field in series:
+        # Iterate through each word in the current element
+        for word in field:
+            if word in word_frequency: 
+                # If word already in dict, increment its count
+                word_frequency[word] += 1
+            else:
+                # If not add it to the dictionary with count 1 and increment unique_words_count
+                word_frequency[word] = 1
+                unique_words_count += 1
+    # Sort the word_frequency dictionary by frequency in descending order
+    sorted_word_frequency = sorted(word_frequency.items(), key=lambda x: x[1], reverse=True)
+
+    return unique_words_count, sorted_word_frequency
+
+def most_frequent(series, from_value, to_value):
+    '''returns a dictionary containing the
+    "n" most frequent words in an interval - [from_value:to_value] - in the input series.'''
+    return dict(vocabulary_size(series)[1][from_value:to_value]) 
+
+def mean_length_of_words(wordlist):
+    totallength = 0
+    for word in wordlist:
+        totallength = totallength + len(str(word))
+    return totallength/len(wordlist)
+
+def unique_words_ratio(wordlist):
+    count = 0
+    words = {}
+    for word in wordlist:
+        if word not in words:
+            words[word]=1
+            count +=1
+    return count/len(wordlist)
+
+def mention_ratio(data, topic,type):
+    #gives mention ratio for whole column
+    count = 0
+    for field in data[data.type==type]['content_no_stopwords']:
+        if topic in field:
+            count+=1
+    return count/len(data[data.type==type])
