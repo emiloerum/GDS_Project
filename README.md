@@ -1,6 +1,6 @@
 # GDS Project - Fake News Detecter
 Dette github repository indeholder kildekoden af vores udarbejdelse af en fake news detecter til eksamensprojektet i kurset "Grundlæggende Data Science".
-Repositoriet fungerer som et opslagsværk som supplement til vores projekt rapport - der omhandler processesen af vores arbejde og præsenterer resultaterne heraf - snarere end et eksekverbart projekt.
+Repositoriet fungerer som et opslagsværk som supplement til vores projekt rapport - der omhandler processesen af vores arbejde og præsenterer resultaterne heraf - snarere end et eksekverbart projekt. Projektet er lavet i jupyter notebooks og en enkelt python fil.
 Dette skyldes at det ikke er muligt at lægge alt den anvendte data - der i kildekoden bliver preprocesseret og modelleret - op i repositoriet da filerne er meget store.
 
 Nedenstående struktur giver kun et kort resume af indholdet af filerne.
