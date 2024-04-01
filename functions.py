@@ -88,7 +88,7 @@ def reduction_rate(after,before):
      and returns this rounded to 3 decimal points'''
      return round((before - after)/before, 3)
 
-def word_frequency_plot(counter_dict, title):
+def word_frequency_plot(counter_dict, title, y_lim=None):
     '''Plots the frequency of the 10000 most common words given a counter object
     of words and their frequencies and a title'''
 
@@ -102,10 +102,10 @@ def word_frequency_plot(counter_dict, title):
     
     plt.title(title)
     plt.xlabel('Words Ranked by Frequency')
-    plt.ylabel('Frequency')
-    # Using logarithmic scale for better visibility of frequencies
-    plt.yscale('log')  
+    plt.ylabel('Frequency')  
     
+    if y_lim:
+        plt.ylim(y_lim)
     # Removing x-ticks
     plt.xticks([])
     
